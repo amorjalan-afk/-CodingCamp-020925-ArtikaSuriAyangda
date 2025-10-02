@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your Modern To-Do List</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <h1 class="app-title">My Tasks</h1>
+        <p class="app-subtitle">Organize your day, one task at a time.</p>
+
+        <div class="task-input-section">
+            <input type="text" id="task-text-input" placeholder="Add a new task..." aria-label="Task Description">
+            <input type="date" id="due-date-input" aria-label="Due Date">
+            <button id="add-task-btn" class="action-btn add-btn" title="Add Task">
+                <i class="fas fa-plus"></i>
+            </button>
+        </div>
+
+        <div class="controls-section">
+            <select id="filter-select" class="filter-dropdown" aria-label="Filter Tasks">
+                <option value="all">All Tasks</option>
+                <option value="pending">Pending</option>
+                <option value="completed">Completed</option>
+                <option value="today">Due Today</option>
+                <option value="overdue">Overdue</option>
+            </select>
+            <button id="delete-all-btn" class="action-btn delete-all-btn" title="Delete All Tasks">
+                <i class="fas fa-trash-alt"></i> Delete All
+            </button>
+        </div>
+
+        <div class="task-list-container">
+            <ul id="task-list">
+                </ul>
+            <p id="empty-list-message" class="empty-message" style="display: none;">No tasks found. Let's add some!</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
