@@ -1,0 +1,296 @@
+/* Palet Warna */
+:root {
+    --bg-dark: #1e1e2e;
+    --card-dark: #28283d;
+    --text-light: #e0e0e0;
+    --text-muted: #a0a0b0;
+    --accent-blue: #88c0d0; /* Untuk tombol/highlight */
+    --accent-green: #a3be8c; /* Untuk Completed */
+    --accent-red: #bf616a; /* Untuk Delete/Overdue */
+    --accent-yellow: #ebcb8b; /* Untuk Pending */
+    --border-color: #3b3b52;
+}
+
+/* Base Styles */
+body {
+    font-family: 'Roboto', sans-serif; /* Font modern */
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Mengatur item dari atas */
+    min-height: 100vh;
+    padding: 40px 20px;
+    box-sizing: border-box;
+}
+
+/* Container Aplikasi */
+.app-container {
+    background-color: var(--card-dark);
+    padding: 35px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+    width: 100%;
+    max-width: 650px;
+    box-sizing: border-box;
+}
+
+.app-title {
+    text-align: center;
+    color: var(--accent-blue);
+    font-size: 2.8em;
+    margin-bottom: 10px;
+    letter-spacing: 1px;
+}
+
+.app-subtitle {
+    text-align: center;
+    color: var(--text-muted);
+    font-size: 1.1em;
+    margin-bottom: 30px;
+}
+
+/* Input Section */
+.task-input-section {
+    display: flex;
+    gap: 12px;
+    margin-bottom: 25px;
+}
+
+.task-input-section input[type="text"],
+.task-input-section input[type="date"] {
+    flex-grow: 1;
+    padding: 12px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 1em;
+    outline: none;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.task-input-section input[type="text"]::placeholder {
+    color: var(--text-muted);
+}
+
+.task-input-section input:focus {
+    border-color: var(--accent-blue);
+    box-shadow: 0 0 0 3px rgba(136, 192, 208, 0.3);
+}
+
+/* Tombol Aksi */
+.action-btn {
+    background-color: var(--accent-blue);
+    color: var(--bg-dark);
+    border: none;
+    padding: 12px 18px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1em;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+}
+
+.action-btn:hover {
+    background-color: #6da2b4; /* Sedikit lebih gelap */
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+.action-btn:active {
+    transform: translateY(0);
+}
+
+.add-btn {
+    padding: 12px 16px; /* Lebih kecil untuk ikon saja */
+}
+
+/* Control Section (Filter & Delete All) */
+.controls-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+    gap: 15px;
+}
+
+.filter-dropdown {
+    padding: 10px 15px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    background-color: var(--bg-dark);
+    color: var(--text-light);
+    font-size: 1em;
+    appearance: none; /* Menghilangkan gaya default dropdown */
+    -webkit-appearance: none;
+    background-image: url('data:image/svg+xml;utf8,<svg fill="%23e0e0e0" height="24" viewBox="0 0 24 24" width="24" xmlns="http://www.w3.org/2000/svg"><path d="M7 10l5 5 5-5z"/></svg>');
+    background-repeat: no-repeat;
+    background-position: right 10px top 50%;
+    background-size: 24px 24px;
+    cursor: pointer;
+    outline: none;
+    flex-grow: 1;
+    max-width: 200px;
+}
+
+.filter-dropdown option {
+    background-color: var(--bg-dark); /* Background untuk option */
+    color: var(--text-light);
+}
+
+.delete-all-btn {
+    background-color: var(--accent-red);
+    color: white;
+}
+
+.delete-all-btn:hover {
+    background-color: #a7545d;
+}
+
+/* Task List */
+.task-list-container {
+    background-color: var(--bg-dark);
+    border-radius: 10px;
+    padding: 15px;
+    min-height: 100px;
+    border: 1px solid var(--border-color);
+}
+
+#task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid var(--border-color);
+    transition: background-color 0.3s;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-checkbox {
+    margin-right: 15px;
+    width: 20px;
+    height: 20px;
+    min-width: 20px;
+    min-height: 20px;
+    accent-color: var(--accent-green); /* Warna checkbox */
+    cursor: pointer;
+}
+
+.task-details {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    margin-right: 15px;
+}
+
+.task-text {
+    font-size: 1.1em;
+    font-weight: 500;
+    color: var(--text-light);
+    word-break: break-word; /* Memastikan teks tidak overflow */
+}
+
+.task-date {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 3px;
+}
+
+.task-actions {
+    display: flex;
+    gap: 8px;
+}
+
+.task-actions button {
+    background: none;
+    border: none;
+    color: var(--text-muted);
+    font-size: 1em;
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.task-actions button:hover {
+    color: var(--accent-blue);
+}
+
+.task-actions .delete-task-btn:hover {
+    color: var(--accent-red);
+}
+
+/* Status Task */
+.task-item.completed .task-text,
+.task-item.completed .task-date {
+    text-decoration: line-through;
+    color: var(--text-muted);
+}
+
+.task-item.overdue .task-date {
+    color: var(--accent-red);
+    font-weight: bold;
+}
+
+.task-item.due-today .task-date {
+    color: var(--accent-yellow);
+    font-weight: bold;
+}
+
+.empty-message {
+    text-align: center;
+    color: var(--text-muted);
+    padding: 30px 0;
+    font-style: italic;
+    font-size: 1.1em;
+}
+
+/* Responsif */
+@media (max-width: 600px) {
+    .app-container {
+        padding: 25px;
+    }
+    .task-input-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .task-input-section input[type="date"] {
+        max-width: none; /* Izinkan date input selebar mungkin */
+    }
+    .controls-section {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .filter-dropdown {
+        max-width: none;
+    }
+    .task-item {
+        flex-wrap: wrap; /* Izinkan item task wrap */
+        justify-content: space-between;
+    }
+    .task-details {
+        flex-basis: 100%; /* Ambil lebar penuh */
+        margin-bottom: 10px;
+        order: -1; /* Pindahkan detail ke atas */
+    }
+    .task-checkbox {
+        order: 0;
+    }
+    .task-actions {
+        order: 1;
+        width: 100%;
+        justify-content: flex-end; /* Aksi di kanan bawah */
+    }
+}
